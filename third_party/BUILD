@@ -53,3 +53,20 @@ cc_library(
     visibility = ["//visibility:public"],
     deps = [":icuuc"],
 )
+
+cc_library(
+    name = "icuio",
+    srcs = glob([
+        "icu4c/source/io/*.cpp",
+        "icu4c/source/io/*.h",
+    ]),
+    hdrs = glob(["icu4c/source/io/unicode/*.h"]),
+    defines = [
+        "U_IO_IMPLEMENTATION",
+        "U_STATIC_IMPLEMENTATION",
+    ],
+    includes = ["icu4c/source/io"],
+    linkstatic = True,
+    visibility = ["//visibility:public"],
+    deps = [":icuuc"],
+)
