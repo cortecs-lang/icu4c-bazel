@@ -1,12 +1,13 @@
 "Import of icu4c into bazel"
 module(name = "icu4c", version = "76.1")
 
-git_repository = use_repo_rule("@bazel_tools//tools/build_defs/repo:git.bzl", "git_repository")
 bazel_dep(name = "rules_cc", version = "0.0.13")
 
+git_repository = use_repo_rule("@bazel_tools//tools/build_defs/repo:git.bzl", "git_repository")
 git_repository(
     name = "icu",
     remote = "https://github.com/unicode-org/icu.git",
     tag = "release-76-1",
+    patches = ["//third_party:remove_build_files.patch"],
     build_file = "//third_party:BUILD"
 )
