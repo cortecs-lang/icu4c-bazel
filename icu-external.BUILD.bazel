@@ -9,7 +9,6 @@ cc_library(
         "U_STATIC_IMPLEMENTATION",
     ],
     linkstatic = True,
-    visibility = ["//visibility:public"],
     deps = [":icuuc_headers"],
 )
 

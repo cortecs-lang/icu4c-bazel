@@ -1,5 +1,6 @@
 build --incompatible_disallow_empty_glob
 
 common --enable_platform_specific_config
-build:linux --conlyopt="-std=gnu11" --cxxopt="-std=c++17"
+build:linux --conlyopt="-std=c11" --cxxopt="-std=c++17"
+build:macos --conlyopt="-std=c11" --cxxopt="-std=c++17"
 build:windows --conlyopt="/std:c11" --cxxopt="/std:c++17" --copt="/utf-8"
