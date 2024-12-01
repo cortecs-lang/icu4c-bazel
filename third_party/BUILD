@@ -4,15 +4,17 @@ cc_library(
         "icu4c/source/stubdata/*.cpp",
         "icu4c/source/stubdata/*.h",
     ]),
+    defines = [
+        "U_COMMON_IMPLEMENTATION",
+        "U_STATIC_IMPLEMENTATION",
+    ],
+    linkstatic = True,
     visibility = ["//visibility:public"],
     deps = [":icuuc_headers"],
 )
 
 cc_library(
     name = "icuuc_headers",
-    srcs = glob([
-        "icu4c/source/common/*.h",
-    ]),
     hdrs = glob(["icu4c/source/common/unicode/*.h"]),
     includes = ["icu4c/source/common"],
 )
@@ -21,8 +23,13 @@ cc_library(
     name = "icuuc",
     srcs = glob([
         "icu4c/source/common/*.cpp",
+        "icu4c/source/common/*.h",
     ]),
-    defines = ["U_COMMON_IMPLEMENTATION"],
+    defines = [
+        "U_COMMON_IMPLEMENTATION",
+        "U_STATIC_IMPLEMENTATION",
+    ],
+    linkstatic = True,
     visibility = ["//visibility:public"],
     deps = [
         ":icuuc_headers",
@@ -37,8 +44,12 @@ cc_library(
         "icu4c/source/i18n/*.h",
     ]),
     hdrs = glob(["icu4c/source/i18n/unicode/*.h"]),
-    defines = ["U_I18N_IMPLEMENTATION"],
+    defines = [
+        "U_I18N_IMPLEMENTATION",
+        "U_STATIC_IMPLEMENTATION",
+    ],
     includes = ["icu4c/source/i18n"],
+    linkstatic = True,
     visibility = ["//visibility:public"],
     deps = [":icuuc"],
 )
