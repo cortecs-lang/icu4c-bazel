@@ -68,5 +68,8 @@ cc_library(
     includes = ["icu4c/source/io"],
     linkstatic = True,
     visibility = ["//visibility:public"],
-    deps = [":icuuc"],
+    deps = [
+        ":icui18n",
+        ":icuuc",
+    ],
 )
